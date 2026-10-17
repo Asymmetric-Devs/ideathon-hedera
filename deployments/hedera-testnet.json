@@ -1,7 +1,7 @@
 {
   "network": "hedera-testnet",
   "chainId": 296,
-  "topicId": "",
+  "topicId": "0.0.11061324",
   "greenton": "0xefD852E3a934FAd4814A89d02b65C8BefB77528a",
   "market": "0x00D031d2114FA3059E42a5f3190211Fa2638E98B",
   "feeBps": 500,
@@ -25,6 +25,13 @@
     "verify:IMPEN1-202603": "0x323ea1b105b8a451c0a76c848ef4d8965d76dc6201f2e9f3a5562d0fbaec66b2",
     "verify:TACOP1-202603": "0x6a018ce89cb0089e6879ce7a5ea5b2305aeb018ff8254b45ac870137ca74f6ff",
     "list:IMPEN1-202603": "0x97b98be17c5b1748096fd9d5f718efd71edb54712e3b7498d55a55f702e2b4f9",
-    "buyAndRetire:offer0": "0x8074f3dcdb1d53597bf314717e35829c442814c82e8625bd9e812093c3118e36"
+    "buyAndRetire:offer0": "0x8074f3dcdb1d53597bf314717e35829c442814c82e8625bd9e812093c3118e36",
+    "topicCreate": "0.0.11061044@1792241673.650867075",
+    "hcs:CHACO1-201903": "0.0.11061324#1",
+    "hcs:IMPEN1-201903": "0.0.11061324#2",
+    "hcs:TACOP1-201903": "0.0.11061324#3",
+    "hcs:CHACO1-202603": "0.0.11061324#4",
+    "hcs:IMPEN1-202603": "0.0.11061324#5",
+    "hcs:TACOP1-202603": "0.0.11061324#6"
   }
 }

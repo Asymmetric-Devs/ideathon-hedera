@@ -55,5 +55,6 @@ Estado al 17/10: **61.639 GTON en circulación y 100 retiradas en 1 compra**. Ha
 | **TACOP1 · 2026 NDVI 0,612 → CONGELA, no hay lote nuevo** | [`0x6a018ce8…`](https://hashscan.io/testnet/transaction/0x6a018ce89cb0089e6879ce7a5ea5b2305aeb018ff8254b45ac870137ca74f6ff) |
 | Oferta 0: 3.000 t del lote IMPEN1 2026 a 0,01 HBAR/t, en custodia del mercado | [`0x97b98be1…`](https://hashscan.io/testnet/transaction/0x97b98be17c5b1748096fd9d5f718efd71edb54712e3b7498d55a55f702e2b4f9) |
 | **Compra y quema atómica:** 100 t de IMPEN1 2026, el comprador paga 1 HBAR (vendedor 0,95, tesorería 0,05) y se quema a nombre de «Empresa Demo SA - huella 2026» | [`0x8074f3dc…`](https://hashscan.io/testnet/transaction/0x8074f3dcdb1d53597bf314717e35829c442814c82e8625bd9e812093c3118e36) |
-| Topic de HCS (evidencia) | **Pendiente**: HCS usa gRPC y la red donde se desplegó lo bloquea. Se crea y se publica con `npm run hcs` desde otra red; los hashes de evidencia ya están en los lotes |
+| Topic de HCS (evidencia) | [`0.0.11061324`](https://hashscan.io/testnet/topic/0.0.11061324) · 6 mensajes, uno por verificación (#1 a #6) |
+| Auditoría | `npm run audit`: 5 de 5 lotes coinciden con su mensaje en HCS; TACOP1 2026 (congelado) no tiene lote y su evidencia es el mensaje #6 |
 

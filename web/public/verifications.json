@@ -10,7 +10,9 @@
     "tco2e_proposed": 13997,
     "minted": "13997",
     "tx": "0xf8f0f1be2f921c1d8b8b1a4afbb295fa3660ec35eb99272d19a6e1386710112d",
-    "evidence": "0x05ad5e5024d90954854f55cc8f9abd22b4f78e1ef23b3cfbfab4f30bccec13e2"
+    "evidence": "0x05ad5e5024d90954854f55cc8f9abd22b4f78e1ef23b3cfbfab4f30bccec13e2",
+    "hcs_seq": "1",
+    "hcs_topic": "0.0.11061324"
   },
   {
     "parcel": "IMPEN1",
@@ -23,7 +25,9 @@
     "tco2e_proposed": 14082,
     "minted": "14082",
     "tx": "0xc7d09f7c4f89efc209c0d9a2cfc337ec199033cc49b01d305273483d3c43e90c",
-    "evidence": "0x589f05ee516a3c261b400bf03833e661fe174dd2a8516b56ab25c2da89230416"
+    "evidence": "0x589f05ee516a3c261b400bf03833e661fe174dd2a8516b56ab25c2da89230416",
+    "hcs_seq": "2",
+    "hcs_topic": "0.0.11061324"
   },
   {
     "parcel": "TACOP1",
@@ -36,7 +40,9 @@
     "tco2e_proposed": 5478,
     "minted": "5478",
     "tx": "0xc1e621e7c47fad9df2298af352cb88e4d31794842d85b80a3a025cb8c449fa9d",
-    "evidence": "0x7d711f0723462a186f02ca3fe4c491ffd7b8f57e7ca76ce123bf6203ac162943"
+    "evidence": "0x7d711f0723462a186f02ca3fe4c491ffd7b8f57e7ca76ce123bf6203ac162943",
+    "hcs_seq": "3",
+    "hcs_topic": "0.0.11061324"
   },
   {
     "parcel": "CHACO1",
@@ -49,7 +55,9 @@
     "tco2e_proposed": 14083,
     "minted": "14083",
     "tx": "0x3a448871df07f95c78bb77e324472f97efd471c5b02b227930d025074ef6d8f6",
-    "evidence": "0xde847bb9ceef5bdcb72809213683775cb8b219ccaf978b48c491fb6bad0f374d"
+    "evidence": "0xde847bb9ceef5bdcb72809213683775cb8b219ccaf978b48c491fb6bad0f374d",
+    "hcs_seq": "4",
+    "hcs_topic": "0.0.11061324"
   },
   {
     "parcel": "IMPEN1",
@@ -62,7 +70,9 @@
     "tco2e_proposed": 14099,
     "minted": "14099",
     "tx": "0x323ea1b105b8a451c0a76c848ef4d8965d76dc6201f2e9f3a5562d0fbaec66b2",
-    "evidence": "0x60084cd4debba3d036d2f830903c81e560b926c1ec59abb6295fdc240fc82c93"
+    "evidence": "0x60084cd4debba3d036d2f830903c81e560b926c1ec59abb6295fdc240fc82c93",
+    "hcs_seq": "5",
+    "hcs_topic": "0.0.11061324"
   },
   {
     "parcel": "TACOP1",
@@ -75,6 +85,8 @@
     "tco2e_proposed": 2898,
     "minted": "0",
     "tx": "0x6a018ce89cb0089e6879ce7a5ea5b2305aeb018ff8254b45ac870137ca74f6ff",
-    "evidence": "0xc8e5c7f21b115c87e79c8e4b558f7bf156ee4caaeffb5d1ffd47cdafe3965b9b"
+    "evidence": "0xc8e5c7f21b115c87e79c8e4b558f7bf156ee4caaeffb5d1ffd47cdafe3965b9b",
+    "hcs_seq": "6",
+    "hcs_topic": "0.0.11061324"
   }
 ]
