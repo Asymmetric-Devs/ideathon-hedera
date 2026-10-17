@@ -37,6 +37,8 @@ export function operatorKey(): string {
 export function hederaClient(): Client {
   const client = Client.forTestnet();
   client.setOperator(AccountId.fromString(env("HEDERA_ACCOUNT_ID")), PrivateKey.fromStringECDSA(operatorKey()));
+  // Si el puerto gRPC está bloqueado (redes con firewall), fallar rápido en vez de reintentar minutos.
+  client.setMaxAttempts(3).setRequestTimeout(10_000);
   return client;
 }
 

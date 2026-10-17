@@ -10,7 +10,8 @@
     "demo": "hardhat run scripts/demo.ts --network hedera_testnet",
     "audit": "hardhat run scripts/audit.ts --network hedera_testnet",
     "oracle:submit": "hardhat run scripts/submit-verification.ts --network hedera_testnet",
-    "abi": "hardhat compile && node -e \"const fs=require('fs');for(const n of ['GreenTon','Market']){fs.writeFileSync('web/src/abi/'+n+'.json',JSON.stringify(JSON.parse(fs.readFileSync('artifacts/contracts/'+n+'.sol/'+n+'.json','utf8')).abi,null,2)+'\\\\n')}\""
+    "abi": "hardhat compile && node -e \"const fs=require('fs');for(const n of ['GreenTon','Market']){fs.writeFileSync('web/src/abi/'+n+'.json',JSON.stringify(JSON.parse(fs.readFileSync('artifacts/contracts/'+n+'.sol/'+n+'.json','utf8')).abi,null,2)+'\\\\n')}\"",
+    "hcs": "hardhat run scripts/hcs-backfill.ts --network hedera_testnet"
   },
   "devDependencies": {
     "@hashgraph/sdk": "^2.81.0",

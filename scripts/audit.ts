@@ -14,6 +14,7 @@ async function main() {
   );
   let bad = 0;
   for (const r of rows) {
+    if (!r.hcs_seq) { console.log(`· ${r.parcel} ${r.period}: evidencia todavía no publicada en HCS (corré npm run hcs)`); continue; }
     const res = await fetch(`${MIRROR}/api/v1/topics/${d.topicId}/messages/${r.hcs_seq}`);
     if (!res.ok) { console.log(`✗ ${r.parcel} ${r.period}: no se pudo leer HCS #${r.hcs_seq} (${res.status})`); bad++; continue; }
     const msg = Buffer.from((await res.json() as { message: string }).message, "base64");

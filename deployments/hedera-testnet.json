@@ -1,0 +1,30 @@
+{
+  "network": "hedera-testnet",
+  "chainId": 296,
+  "topicId": "",
+  "greenton": "0xefD852E3a934FAd4814A89d02b65C8BefB77528a",
+  "market": "0x00D031d2114FA3059E42a5f3190211Fa2638E98B",
+  "feeBps": 500,
+  "accounts": {
+    "admin": "0x87cd615287625BD0c2888Ec79A733aE4E78e91D5",
+    "oracle": "0x7D2aE674965dD13Afc2A34a9Dba0cF8664896479",
+    "owner": "0x0706e41658b9b9b6Bb2B94E6A5d20d3e7A917062",
+    "buyer": "0x19B00052928Ff5FDB3a0419C5Abb4AaBbc555100"
+  },
+  "hederaAccountId": "0.0.11061044",
+  "txs": {
+    "greentonDeploy": "0x7f443cc94ee1391b710f6958033833230350902fa324010d55924096edf3e0ae",
+    "marketDeploy": "0x05d2ffc4b0c90de9df90796a53ff4897cae06f62bd1740906105fbb86841e842",
+    "register:IMPEN1": "0xda4e1a3491c0563f47c8cddc12c5b8623517c99c741bf0dc3dff96cd4b8ba7f8",
+    "register:CHACO1": "0x9d565ad80873e471876a847e208fcdfb4380aef32b06da70a9c00117a847e56b",
+    "register:TACOP1": "0xce9a45e9fcffd399a60d65ea12a81e6fadb1a6ae1eb6554d54ab1c22927bab73",
+    "verify:CHACO1-201903": "0xf8f0f1be2f921c1d8b8b1a4afbb295fa3660ec35eb99272d19a6e1386710112d",
+    "verify:IMPEN1-201903": "0xc7d09f7c4f89efc209c0d9a2cfc337ec199033cc49b01d305273483d3c43e90c",
+    "verify:TACOP1-201903": "0xc1e621e7c47fad9df2298af352cb88e4d31794842d85b80a3a025cb8c449fa9d",
+    "verify:CHACO1-202603": "0x3a448871df07f95c78bb77e324472f97efd471c5b02b227930d025074ef6d8f6",
+    "verify:IMPEN1-202603": "0x323ea1b105b8a451c0a76c848ef4d8965d76dc6201f2e9f3a5562d0fbaec66b2",
+    "verify:TACOP1-202603": "0x6a018ce89cb0089e6879ce7a5ea5b2305aeb018ff8254b45ac870137ca74f6ff",
+    "list:IMPEN1-202603": "0x97b98be17c5b1748096fd9d5f718efd71edb54712e3b7498d55a55f702e2b4f9",
+    "buyAndRetire:offer0": "0x8074f3dcdb1d53597bf314717e35829c442814c82e8625bd9e812093c3118e36"
+  }
+}

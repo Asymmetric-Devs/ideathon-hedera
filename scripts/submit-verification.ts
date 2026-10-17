@@ -3,7 +3,7 @@ import path from "path";
 import { createHash } from "crypto";
 import { ethers } from "hardhat";
 import { TopicMessageSubmitTransaction } from "@hashgraph/sdk";
-import { GAS, ROOT, hederaClient, oracleWallet, readDeployment, topicLink, txLink } from "./lib";
+import { ROOT, hederaClient, oracleWallet, readDeployment, topicLink, txLink } from "./lib";
 
 export type Evidence = {
   parcel: string; period: number; ndvi: number; scene: string; scene_date: string; cloud: number;
@@ -27,14 +27,21 @@ export async function submitVerification(ev: Evidence) {
   const msg = evidenceMessage(ev, d.greenton, oracle.address);
   const evidence = "0x" + createHash("sha256").update(msg).digest("hex");
 
-  const sent = await new TopicMessageSubmitTransaction().setTopicId(d.topicId).setMessage(msg).execute(client);
-  const receipt = await sent.getReceipt(client);
-  const seq = receipt.topicSequenceNumber!.toString();
-  console.log(`HCS #${seq} en ${d.topicId}:`, `${topicLink(d.topicId)}`);
+  // Sin topic (o sin gRPC) se firma igual en el contrato y la evidencia se publica después con `npm run hcs`.
+  let seq = "";
+  if (d.topicId) {
+    try {
+      const sent = await new TopicMessageSubmitTransaction().setTopicId(d.topicId).setMessage(msg).execute(client);
+      seq = (await sent.getReceipt(client)).topicSequenceNumber!.toString();
+      console.log(`HCS #${seq} en ${d.topicId}:`, `${topicLink(d.topicId)}`);
+    } catch (e) {
+      console.warn("⚠ No se pudo publicar en HCS; queda pendiente para `npm run hcs`.", (e as Error).message.split("\n")[0]);
+    }
+  } else console.warn("⚠ Sin topic de HCS todavía: la evidencia queda pendiente para `npm run hcs`.");
 
   const greenton = await ethers.getContractAt("GreenTon", d.greenton, oracle);
   const ndviMilli = Math.round(ev.ndvi * 1000);
-  const tx = await greenton.submitVerification(ev.parcel, ev.period, ndviMilli, ev.tco2e_proposed, evidence, { gasLimit: GAS.call });
+  const tx = await greenton.submitVerification(ev.parcel, ev.period, ndviMilli, ev.tco2e_proposed, evidence, {});
   await tx.wait();
   const lot = await greenton.getLot(ev.parcel, ev.period);
   const minted = lot.exists ? lot.minted.toString() : "0";
@@ -45,7 +52,8 @@ export async function submitVerification(ev: Evidence) {
   const rows = fs.existsSync(log) ? JSON.parse(fs.readFileSync(log, "utf8")) : [];
   rows.push({
     parcel: ev.parcel, period: ev.period, ndvi: ev.ndvi, scene: ev.scene, scene_date: ev.scene_date, cloud: ev.cloud,
-    hectares: ev.hectares, tco2e_proposed: ev.tco2e_proposed, minted, tx: tx.hash, hcs_topic: d.topicId, hcs_seq: seq, evidence,
+    hectares: ev.hectares, tco2e_proposed: ev.tco2e_proposed, minted, tx: tx.hash, evidence,
+    ...(seq ? { hcs_topic: d.topicId, hcs_seq: seq } : {}),
   });
   fs.writeFileSync(log, JSON.stringify(rows, null, 2));
   client.close();
