@@ -1,0 +1,86 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      pointer-events: none;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .cap-bar {
+      position: absolute;
+      left: 140px;
+      right: 140px;
+      bottom: 20px;
+      min-height: 68px;
+      height: auto;
+      background-color: #14201a;
+      border: 2px solid #c8f25c;
+      border-radius: 14px;
+      padding: 10px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      box-shadow: 0 10px 24px rgba(20, 32, 26, 0.16);
+    }
+
+    .cap-line {
+      width: 100%;
+      font-size: 19px;
+      font-weight: 600;
+      color: #eef3e4;
+      line-height: 1.28;
+      text-align: center;
+    }
+
+    .cap-em {
+      color: #c8f25c;
+      font-weight: 700;
+    }
+  </style>
+
+  <div id="root" data-composition-id="captions-overlay" data-width="1920" data-height="1080" data-start="0" data-duration="133.3">
+    <div id="cap-01" class="clip cap-bar" data-start="0.2" data-duration="14.76" data-track-index="0">
+      <div class="cap-line">Solo en 2025, el norte argentino perdió más de <span class="cap-em">210.000 hectáreas</span> de bosque nativo. Y hoy un crédito de carbono vale lo que vale un PDF firmado por quien cobra por él: nadie puede comprobar si los árboles siguen en pie.</div>
+    </div>
+
+    <div id="cap-02" class="clip cap-bar" data-start="15.8" data-duration="14.06" data-track-index="1">
+      <div class="cap-line">Por eso creamos <span class="cap-em">Dosel</span>. Un satélite <span class="cap-em">Sentinel-2</span> mide el bosque, un oráculo sella la evidencia en <span class="cap-em">Hedera Consensus Service</span>, y un contrato en Hedera emite un <span class="cap-em">GreenTon</span> por cada tonelada, solo mientras el bosque sigue vivo.</div>
+    </div>
+
+    <div id="cap-03" class="clip cap-bar" data-start="30.7" data-duration="16.78" data-track-index="0">
+      <div class="cap-line">Veamos la app, que ya corre sobre <span class="cap-em">Hedera Testnet</span>. En <span class="cap-em">Predios</span>, cualquiera audita cada polígono sin pedir permiso. El Impenetrable y el Parque Nacional Chaco mantienen un <span class="cap-em">NDVI de 0,767</span> y respaldan más de <span class="cap-em">56.000 GreenTon</span>.</div>
+    </div>
+
+    <div id="cap-04" class="clip cap-bar" data-start="48.3" data-duration="22.1" data-track-index="1">
+      <div class="cap-line">¿Y si la vegetación cae? En <span class="cap-em">Taco Pozo</span> el NDVI bajó de 0,81 a 0,61 y el contrato <span class="cap-em">congeló el predio solo</span>: cero tokens. Además cruzamos el NDVI con la <span class="cap-em">cobertura del suelo a 10 metros</span>, y descubrimos que ese predio ya era agrícola. Por eso un auditor humano decide si se descongela.</div>
+    </div>
+
+    <div id="cap-05" class="clip cap-bar" data-start="71.2" data-duration="15.46" data-track-index="0">
+      <div class="cap-line">En el <span class="cap-em">Mercado</span>, una empresa elige un lote y hace clic en <span class="cap-em">Comprar y quemar</span>. Firma con su billetera, y en una sola transacción paga en <span class="cap-em">HBAR</span> al dueño del campo y retira <span class="cap-em">100 toneladas</span> a su nombre. Si algo falla, no se cobra ni se quema nada.</div>
+    </div>
+
+    <div id="cap-06" class="clip cap-bar" data-start="87.5" data-duration="15.19" data-track-index="1">
+      <div class="cap-line">Cada retiro tiene su <span class="cap-em">certificado con código QR</span>. Muestra el lote, la escena satelital y el mensaje de evidencia en <span class="cap-em">HCS</span>, cuyo hash está guardado en el contrato. Cualquiera lo verifica en <span class="cap-em">HashScan</span> sin confiar en Dosel.</div>
+    </div>
+
+    <div id="cap-07" class="clip cap-bar" data-start="103.5" data-duration="15.0" data-track-index="0">
+      <div class="cap-line">El modelo es simple: dar de alta el predio es <span class="cap-em">gratis</span> para el productor. Dosel cobra un <span class="cap-em">5%</span> solo cuando se vende, y el <span class="cap-em">95%</span> llega directo a quien conserva el monte. La empresa que compensa es quien paga.</div>
+    </div>
+
+    <div id="cap-08" class="clip cap-bar" data-start="119.3" data-duration="13.37" data-track-index="1">
+      <div class="cap-line">En Dosel no comprás una promesa: financiás a quien protege el monte nativo, con un <span class="cap-em">satélite que lo demuestra</span>. Los contratos y el topic están en <span class="cap-em">Hedera Testnet</span>, con sus transacciones públicas. Probalo.</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline();
+      window.__timelines = window.__timelines || {};
+      window.__timelines["captions-overlay"] = tl;
+    })();
+  </script>
+</template>

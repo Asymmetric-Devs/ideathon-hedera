@@ -5,7 +5,7 @@ Proyecto para el IDEATHON Neatech 2026 · **Hedera Track · Hello Future**.
 
 **No confiamos en la palabra del dueño del campo.** Un oráculo calcula el NDVI real de Sentinel-2 sobre el polígono GPS del predio, **publica esa evidencia en Hedera Consensus Service** y solo con ese dato el contrato (HSCS) emite GreenTon (1 GTON = 1 tCO₂e). Si el NDVI cae, el contrato **congela el predio y frena la emisión**. Quien compensa su huella **compra y retira (quema) en una sola transacción**: nadie puede revenderlos y el registro es público.
 
-**Demo en vivo:** `PENDIENTE: URL de la web` · para comprar, publicar o retirar hace falta una billetera EVM (MetaMask) en Hedera Testnet con HBAR de prueba.
+**Demo en vivo:** [ideathon-hedera.vercel.app](https://ideathon-hedera.vercel.app/) · para comprar, publicar o retirar hace falta una billetera EVM (MetaMask) en Hedera Testnet con HBAR de prueba.
 
 ## El problema y por qué blockchain
 

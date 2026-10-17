@@ -1,0 +1,10 @@
+[
+ "Solo en 2025, el norte argentino perdió más de doscientas diez mil hectáreas de bosque nativo. Y hoy un crédito de carbono vale lo que vale un PDF firmado por quien cobra por él: nadie puede comprobar si los árboles siguen en pie.",
+ "Por eso creamos Dosel. Un satélite Sentinel-2 mide el bosque, un oráculo sella la evidencia en Hedera Consensus Service, y un contrato en Hedera emite un GreenTon por cada tonelada de carbono, solo mientras el bosque sigue vivo.",
+ "Veamos la app, que ya corre sobre Hedera Testnet. En Predios, cualquiera audita cada polígono sin pedir permiso. El Impenetrable y el Parque Nacional Chaco mantienen un NDVI de cero coma siete seis siete, y respaldan más de cincuenta y seis mil GreenTon.",
+ "¿Y si la vegetación cae? En Taco Pozo el NDVI bajó de cero coma ocho uno a cero coma seis uno, y el contrato congeló el predio solo: cero tokens. Además cruzamos el NDVI con la cobertura del suelo a diez metros, y así descubrimos que ese predio ya era agrícola. Por eso un auditor humano decide si se descongela.",
+ "En el Mercado, una empresa elige un lote y hace clic en Comprar y quemar. Firma con su billetera, y en una sola transacción paga en HBAR al dueño del campo y retira cien toneladas a su nombre. Si algo falla, no se cobra ni se quema nada.",
+ "Cada retiro tiene su certificado con código QR. Muestra el lote, la escena satelital y el mensaje de evidencia en Hedera Consensus Service, cuyo hash está guardado en el contrato. Cualquiera lo verifica en HashScan sin confiar en Dosel.",
+ "El modelo es simple: dar de alta el predio es gratis para el productor. Dosel cobra un cinco por ciento solo cuando se vende, y el noventa y cinco por ciento llega directo a quien conserva el monte. La empresa que compensa es quien paga.",
+ "En Dosel no comprás una promesa: financiás a quien protege el monte nativo, con un satélite que lo demuestra. Los contratos y el topic están en Hedera Testnet, con sus transacciones públicas. Probalo."
+]
