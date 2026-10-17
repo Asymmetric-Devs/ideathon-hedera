@@ -1,0 +1,23 @@
+{
+  "name": "dosel-hedera",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Dosel: cr\u00e9ditos de carbono de bosque nativo verificados por sat\u00e9lite, sobre Hedera (HSCS + HCS).",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.ts --network hedera_testnet",
+    "demo": "hardhat run scripts/demo.ts --network hedera_testnet",
+    "audit": "hardhat run scripts/audit.ts --network hedera_testnet",
+    "oracle:submit": "hardhat run scripts/submit-verification.ts --network hedera_testnet",
+    "abi": "hardhat compile && node -e \"const fs=require('fs');for(const n of ['GreenTon','Market']){fs.writeFileSync('web/src/abi/'+n+'.json',JSON.stringify(JSON.parse(fs.readFileSync('artifacts/contracts/'+n+'.sol/'+n+'.json','utf8')).abi,null,2)+'\\\\n')}\""
+  },
+  "devDependencies": {
+    "@hashgraph/sdk": "^2.81.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^18.0.8",
+    "hardhat": "^2.29.1",
+    "ts-node": "^10.9.2",
+    "typescript": "5.6"
+  }
+}

@@ -1,0 +1,52 @@
+# Hardhat
+node_modules
+artifacts
+cache
+typechain-types
+coverage
+
+# Claves de la demo (las genera scripts/deploy.ts): NUNCA se versionan
+.wallets.json
+
+# Web
+node_modules
+dist
+.vercel
+
+# Oracle (solo código fuente en git; entorno local abajo)
+oracle/.venv/
+oracle/**/__pycache__/
+__pycache__/
+*.py[cod]
+.mypy_cache
+.ruff_cache
+
+# Secretos y entorno
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secret*
+.mcp.json
+
+# Sistema / editor / herramientas locales
+.DS_Store
+.idea
+.vscode
+*.log
+.claude/settings.local.json
+.venv
+venv
+*.pyc
+.pytest_cache
+.cache
+coverage
+
+# HyperFrames
+.hyperframes/
+.thumbnails/
+.waveform-cache/
+**/videos/**/.thumbnails/
+**/videos/**/.waveform-cache/
+**/videos/**/.hyperframes/

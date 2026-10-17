@@ -1,0 +1,127 @@
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  feeBps, getLot, getOffer, getParcel, getPurchase, getRetirement, lotsOf, offerCount, purchaseCount, retirementCount, totalRetired, totalSupply,
+  type PurchaseRow, type LotBalance, type LotInfo, type Offer, type Parcel, type Retirement,
+} from "./chain";
+import { PARCEL_IDS } from "./config";
+import { errText } from "./wallet";
+import { useUi } from "./ui";
+import type { Cover } from "./components/CoverCheck";
+
+export type OpenOffer = Offer & { id: number };
+export type RetirementRow = Retirement & { id: number };
+export type Verification = {
+  parcel: string; period: number; ndvi: number; scene: string; scene_date: string;
+  minted: string | number; tx: string;
+  hcs_topic?: string; hcs_seq?: string; evidence?: string;
+};
+
+type Data = {
+  supply: bigint | null;
+  retired: bigint | null;
+  parcels: Record<string, Parcel>;
+  ver: Verification[];
+  cover: Cover;
+  rets: RetirementRow[];
+  purchases: PurchaseRow[];
+  fee: number;
+  offers: OpenOffer[];
+  myOffers: OpenOffer[];
+  lotInfo: Record<string, LotInfo | null>;
+  lots: LotBalance[];
+  frozen: number;
+  loaded: boolean;
+  lotsLoaded: boolean;
+  err: string;
+  refresh: () => void;
+};
+
+const Ctx = createContext<Data | null>(null);
+export const useData = () => {
+  const v = useContext(Ctx);
+  if (!v) throw new Error("useData fuera de DataProvider");
+  return v;
+};
+
+export function DataProvider({ children }: { children: ReactNode }) {
+  const { wallet } = useUi();
+  const [supply, setSupply] = useState<bigint | null>(null);
+  const [retired, setRetired] = useState<bigint | null>(null);
+  const [parcels, setParcels] = useState<Record<string, Parcel>>({});
+  const [ver, setVer] = useState<Verification[]>([]);
+  const [cover, setCover] = useState<Cover>({});
+  const [rets, setRets] = useState<RetirementRow[]>([]);
+  const [offers, setOffers] = useState<OpenOffer[]>([]);
+  const [lotInfo, setLotInfo] = useState<Record<string, LotInfo | null>>({});
+  const [lots, setLots] = useState<LotBalance[]>([]);
+  const [err, setErr] = useState("");
+  const [purchases, setPurchases] = useState<PurchaseRow[]>([]);
+  const [fee, setFee] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [lotsLoaded, setLotsLoaded] = useState(false);
+
+  const load = useCallback(async () => {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+      const [s, r, n, oc] = await Promise.all([totalSupply(), totalRetired(), retirementCount(), offerCount()]);
+      setSupply(s); setRetired(r);
+      const ps = await Promise.all(PARCEL_IDS.map(async (id) => [id, await getParcel(id)] as const));
+      setParcels(Object.fromEntries(ps));
+      const list = await Promise.all(Array.from({ length: Number(n) }, async (_, i) => {
+        const r = await getRetirement(i);
+        return r ? { ...r, id: i } : null;
+      }));
+      setRets(list.filter((x): x is RetirementRow => !!x).reverse());
+      const os = await Promise.all(Array.from({ length: Number(oc) }, async (_, id) => {
+        const o = await getOffer(id);
+        return o ? { ...o, id } : null;
+      }));
+      const open = os.filter((o): o is OpenOffer => !!o && o.open);
+      setOffers(open);
+      const [pc, fb] = await Promise.all([purchaseCount(), feeBps()]);
+      setFee(fb);
+      const pl = await Promise.all(Array.from({ length: Number(pc) }, async (_, i) => {
+        const p = await getPurchase(i);
+        return p ? { ...p, id: i } : null;
+      }));
+      setPurchases(pl.filter((x): x is PurchaseRow => !!x));
+      const keys = [...new Set(open.map((o) => `${o.parcel}:${o.period}`))];
+      const infos = await Promise.all(keys.map(async (k) => {
+        const [parcel, p] = k.split(":");
+        return [k, await getLot(parcel, Number(p))] as const;
+      }));
+      setLotInfo(Object.fromEntries(infos));
+      setErr("");
+        break;
+      } catch (e) {
+        if (attempt === 2) setErr(errText(e));
+        else await new Promise((r) => setTimeout(r, 1200 * (attempt + 1)));
+      }
+    }
+    setLoaded(true);
+  }, []);
+
+  const loadWallet = useCallback(async () => {
+    if (!wallet) { setLots([]); setLotsLoaded(false); return; }
+    try { setLots(await lotsOf(wallet)); } catch { setLots([]); }
+    setLotsLoaded(true);
+  }, [wallet]);
+
+  const refresh = useCallback(() => { load(); loadWallet(); }, [load, loadWallet]);
+
+  useEffect(() => {
+    load();
+    fetch("/verifications.json").then((r) => r.json()).then(setVer).catch(() => {});
+    fetch("/crosscheck.json").then((r) => r.json()).then(setCover).catch(() => {});
+  }, [load]);
+  useEffect(() => { loadWallet(); }, [loadWallet]);
+
+  const frozen = useMemo(() => Object.values(parcels).filter((p) => p.frozen).length, [parcels]);
+  const myOffers = useMemo(() => offers.filter((o) => o.seller === wallet), [offers, wallet]);
+
+  const value = useMemo(
+    () => ({ supply, retired, parcels, ver, cover, rets, purchases, fee, offers, myOffers, lotInfo, lots, frozen, loaded, lotsLoaded, err, refresh }),
+    [supply, retired, parcels, ver, cover, rets, purchases, fee, offers, myOffers, lotInfo, lots, frozen, loaded, lotsLoaded, err, refresh],
+  );
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+}
